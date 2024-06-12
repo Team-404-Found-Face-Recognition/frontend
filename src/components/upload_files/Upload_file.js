@@ -33,8 +33,11 @@ const Upload_file = () => {
   const [images, setImages] = useState([]);
   const [handle_upload_click, set_handle_upload_click] = useState(false)
 
+  const [total_images,set_total_images]=useState(false)
+
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
+    set_total_images(files.length)
     const newImages = files.map(file => URL.createObjectURL(file))
     setImages(prevImages => [...prevImages, ...newImages])
     setFiles(files);
@@ -122,6 +125,7 @@ const Upload_file = () => {
       document.body.style.overflowY = 'scroll'
       set_handle_upload_click(false)
       set_change_lottie(false)
+      set_total_images(false)
       setImages([])
     }, 1900);
   }
@@ -231,6 +235,9 @@ const Upload_file = () => {
                 </h1> : ""
               }
             </div>
+            {
+              total_images && <h2 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">{total_images}</h2>
+            }
           </div>
         </div>
 

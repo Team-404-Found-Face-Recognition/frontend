@@ -16,10 +16,6 @@ const Home = () => {
     const button_ref = useRef(null)
     const details_ref = useRef(null)
 
-    const job_card_1_ref = useRef(null)
-    const job_card_2_ref = useRef(null)
-
-
     useEffect(() => {
         let arr = [];
 
@@ -73,14 +69,12 @@ const Home = () => {
     useEffect(() => {
         const tl = gsap.timeline();
         gsap.set([heading_ref.current, paragraph_ref.current, button_ref.current, details_ref.current], { opacity: 0, y: 150 });
-        gsap.set([job_card_1_ref.current, job_card_2_ref.current], { scale: "1.5" })
         tl.to(heading_ref.current, { zIndex: "20", opacity: 1, y: 0, duration: 0.5 })
             .to(paragraph_ref.current, { zIndex: "20", opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
             .to(button_ref.current, { zIndex: "20", opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
             .to(details_ref.current, { zIndex: "20", opacity: 1, y: 0, duration: 0.5 }, '-=0.3');
 
-        gsap.to(job_card_1_ref.current, { scale: "1", duration: "1" })
-        gsap.to(job_card_2_ref.current, { scale: "1", duration: "1" })
+      
     }, []);
 
     const { isChecked, setIsChecked } = useContext(Sitecontext)
@@ -154,13 +148,7 @@ const Home = () => {
                     <img width={200} src="/arrow1.svg"></img>
                 </div>
 
-                <div ref={job_card_1_ref} className='absolute z-10 left-18 top-20 md:left-20 lg:left-20 xl:left-36'>
-                    {/* <img width={250} src="/job_card_1.svg"></img> */}
-                </div>
-
-                <div ref={job_card_2_ref} className='absolute z-10 bottom-44 md:bottom-1/3 right-2 md:right-20 lg:right-20 xl:right-36'>
-                    {/* <img width={250} className='w-52 sm:w-64' src="/job_card_2.svg"></img> */}
-                </div>
+               
 
                 <div className='hidden sm:block absolute z-30 sm:bottom-72 2xl:bottom-10 sm:right-1/2'>
                     <img width={100} src="/arrow2.svg"></img>
